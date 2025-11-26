@@ -6,7 +6,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
 import ProtectedRoute from "./ProtectedRoute";
-import GpsTracker from "./pages/GpsTracker";
+import GpsTracker from "./pages/gps-tracker";
 import LiveMap from "./pages/live-map";
 
 function App() {
