@@ -1,67 +1,29 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { io } from "socket.io-client"; 
-
-// 🛑 CHANGE MADE HERE: Protocol changed to https
-const SOCKET_SERVER_URL = "https://16.170.248.80:5001"; 
 
 function GpsTracker() {
   const { number } = useParams();
 
   useEffect(() => {
-    // Establish Socket.IO connection
-    const socket = io(SOCKET_SERVER_URL);
-    
-    // Check if Geolocation is available
     if ("geolocation" in navigator) {
+      navigator.geolocation.watchPosition((pos) => {
+        const latitude = pos.coords.latitude;
+        const longitude = pos.coords.longitude;
 
-      // 1. Success handler: Sends position via Socket.IO
-      const positionSuccess = (pos) => {
-        const locationData = {
-          number,
-          latitude: pos.coords.latitude,
-          longitude: pos.coords.longitude
-        };
-        
-        // Use socket.emit() to send the real-time update
-        socket.emit("sendLocation", locationData); 
-      };
-
-      // 2. Error handler for permission issues
-      const positionError = (error) => {
-        console.error("Geolocation Error:", error.message);
-        alert(`Error getting location: ${error.message}. Please enable GPS and location permissions.`);
-      };
-
-      const options = {
-        enableHighAccuracy: true,
-        timeout: 5000,
-        maximumAge: 0
-      };
-
-      // Start continuous watching
-      const watchId = navigator.geolocation.watchPosition(
-        positionSuccess,
-        positionError,
-        options
-      );
-
-      // Cleanup function: stop watching and disconnect
-      return () => {
-        navigator.geolocation.clearWatch(watchId);
-        socket.disconnect();
-      };
-    } else {
-      console.error("Geolocation is not supported by this browser.");
+        fetch("http://16.170.248.80:5001/api/updateLocation", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            number,
+            latitude,
+            longitude
+          })
+        });
+      });
     }
   }, [number]);
 
-  return (
-    <div>
-      <h2>GPS Tracking Active for Vehicle: **{number}** 🚦</h2>
-      <p>Updates are being sent in real-time. Do not close this page on the device you wish to track.</p>
-    </div>
-  );
+  return <h2>GPS Tracking Active for {number}</h2>;
 }
 
 export default GpsTracker;
