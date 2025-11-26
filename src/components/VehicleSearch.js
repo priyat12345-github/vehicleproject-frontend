@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import LiveMap from "../pages/LiveMap";  // ⭐ Add import
+import LiveMap from "../pages/live-map";  // ⭐ Add import
 
 function VehicleSearch() {
   const [vehicleNumber, setVehicleNumber] = useState("");
