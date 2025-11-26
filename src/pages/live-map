@@ -1,0 +1,4 @@
+<MapContainer center={[lat, lng]} zoom={15}>
+   <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" /> 
+   <Marker position={[lat, lng]} /> 
+</MapContainer>

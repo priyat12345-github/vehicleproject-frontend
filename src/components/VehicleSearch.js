@@ -75,7 +75,7 @@ function VehicleSearch() {
 
       const formattedNumber = vehicleNumber.trim().toUpperCase();
       const response = await axios.get(
-        `http://localhost:5001/api/vehicles/${formattedNumber}`
+      `http://16.170.248.80:5001/api/vehicles/${formattedNumber}`
       );
 
       setVehicle(response.data);
