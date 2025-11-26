@@ -2,8 +2,8 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { io } from "socket.io-client"; 
 
-// Server URL must match the backend setup
-const SOCKET_SERVER_URL = "http://16.170.248.80:5001"; 
+// 🛑 CHANGE MADE HERE: Protocol changed to https
+const SOCKET_SERVER_URL = "https://16.170.248.80:5001"; 
 
 function GpsTracker() {
   const { number } = useParams();
@@ -30,7 +30,6 @@ function GpsTracker() {
       // 2. Error handler for permission issues
       const positionError = (error) => {
         console.error("Geolocation Error:", error.message);
-        // Alert the user to enable permissions (crucial for mobile devices)
         alert(`Error getting location: ${error.message}. Please enable GPS and location permissions.`);
       };
 

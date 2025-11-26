@@ -5,10 +5,10 @@ import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import { io } from "socket.io-client"; 
 
-// Server URL must match the backend setup
-const SOCKET_SERVER_URL = "http://16.170.248.80:5001"; 
+// 🛑 CHANGE MADE HERE: Protocol changed to https
+const SOCKET_SERVER_URL = "https://16.170.248.80:5001"; 
 
-// Define custom marker icon
+// Define custom marker icon (omitted for brevity)
 const markerIcon = new L.Icon({
   iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
   iconSize: [25, 41],
@@ -22,14 +22,10 @@ const MapUpdater = ({ location, markerRef }) => {
   useEffect(() => {
     if (location) {
       const newLatLng = [location.latitude, location.longitude];
-
-      // Update Marker Position using the ref
       const marker = markerRef.current;
       if (marker) {
         marker.setLatLng(newLatLng);
       }
-
-      // Center the map view on the new location (optional)
       map.setView(newLatLng, map.getZoom()); 
     }
   }, [location, map, markerRef]); 
@@ -41,21 +37,18 @@ const MapUpdater = ({ location, markerRef }) => {
 function LiveMap() {
   const { number } = useParams();
   const [location, setLocation] = useState(null);
-  // Ref to hold the Leaflet Marker instance for efficient updates
   const markerRef = useRef(null); 
 
   // 1. Real-Time Socket.IO Listener
   useEffect(() => {
     const socket = io(SOCKET_SERVER_URL);
 
-    // Listen for location updates broadcast by the server
     socket.on("locationUpdate", (data) => {
-      // Only update state if the data is for the vehicle this map is viewing
-      if (data.number === number) {
+      if (data.number === number) { 
         setLocation({ 
           latitude: data.latitude, 
           longitude: data.longitude, 
-          timestamp: data.timestamp // Use the timestamp sent from server
+          timestamp: data.timestamp 
         });
       }
     });
@@ -66,11 +59,12 @@ function LiveMap() {
     };
   }, [number]); 
 
-  // 2. Initial Location Fetch (from the API route we restored in server.js)
+  // 2. Initial Location Fetch 
   useEffect(() => {
     const fetchInitialLocation = async () => {
       try {
-        const res = await fetch(`${SOCKET_SERVER_URL}/api/getLocation?number=${number}`);
+        // HTTP request uses the SOCKET_SERVER_URL base
+        const res = await fetch(`${SOCKET_SERVER_URL}/api/getLocation?number=${number}`); 
         const data = await res.json();
         if (data.success) {
           setLocation(data.location);
@@ -88,7 +82,6 @@ function LiveMap() {
   return (
     <div style={{ height: "90vh", width: "100%" }}>
       <MapContainer
-        // Initial center using the latest available location
         center={[location.latitude, location.longitude]} 
         zoom={15}
         style={{ height: "100%", width: "100%" }}
@@ -98,7 +91,6 @@ function LiveMap() {
         <Marker
           position={[location.latitude, location.longitude]}
           icon={markerIcon}
-          // Pass the ref to the Marker component
           ref={markerRef} 
         >
           <Popup>
@@ -108,7 +100,6 @@ function LiveMap() {
           </Popup>
         </Marker>
 
-        {/* Component to handle map re-centering and marker updates on live data */}
         <MapUpdater location={location} markerRef={markerRef} />
       </MapContainer>
     </div>
