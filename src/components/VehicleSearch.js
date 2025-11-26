@@ -81,6 +81,8 @@ function VehicleSearch() {
           <p><b>Model:</b> {vehicle.model || "N/A"}</p>
           <p><b>Year:</b> {vehicle.year || "N/A"}</p>
           <p><b>Owner:</b> {vehicle.owner || "N/A"}</p>
+          <p><b>Insurance Expiry:</b> {vehicle.insuranceExpiry ? new Date(vehicle.insuranceExpiry).toLocaleDateString() : "N/A"}</p>
+          <p><b>PUC Expiry:</b> {vehicle.pucExpiry ? new Date(vehicle.pucExpiry).toLocaleDateString() : "N/A"}</p>
         </div>
       )}
 
