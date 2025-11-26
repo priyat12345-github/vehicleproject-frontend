@@ -1,14 +1,29 @@
-navigator.geolocation.watchPosition((pos) => {
-const latitude = pos.coords.latitude; 
-const longitude = pos.coords.longitude; 
-// send to backend 
-fetch("http://your-backend-ip/api/updateLocation", { 
-  method: "POST", 
-  headers: { "Content-Type": "application/json" }, 
-  body: JSON.stringify({ 
-    regNumber: "KA01AB1234", 
-    latitude, 
-    longitude 
-  }) 
-}); 
-});
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
+
+function GpsTracker() {
+  const { number } = useParams();
+
+  useEffect(() => {
+    if ("geolocation" in navigator) {
+      navigator.geolocation.watchPosition((pos) => {
+        const latitude = pos.coords.latitude;
+        const longitude = pos.coords.longitude;
+
+        fetch("http://16.170.248.80:5001/api/updateLocation", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            number,
+            latitude,
+            longitude
+          })
+        });
+      });
+    }
+  }, [number]);
+
+  return <h2>GPS Tracking Active for {number}</h2>;
+}
+
+export default GpsTracker;

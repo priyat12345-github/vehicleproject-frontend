@@ -11,3 +11,20 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+@import "leaflet/dist/leaflet.css";
+@import "leaflet-control-geocoder/dist/Control.Geocoder.css";
+@import "react-leaflet-markercluster/dist/styles.min.css";                            
+@import "leaflet-routing-machine/dist/leaflet-routing-machine.css";
+@import "leaflet.awesome-markers/dist/leaflet.awesome-markers.css";
+@import "leaflet.awesome-markers/dist/leaflet.awesome-markers.min.css";
+@import "leaflet-geosearch/dist/geosearch.css";
+@import "leaflet-control-geocoder/dist/Control.Geocoder.css";
+
+
+@import "leaflet-control-geocoder/dist/Control.Geocoder.css";
+@import "react-leaflet-markercluster/dist/styles.min.css";
+@import "leaflet-routing-machine/dist/leaflet-routing-machine.css";
+@import "leaflet.awesome-markers/dist/leaflet.awesome-markers.css";
+@import "leaflet.awesome-markers/dist/leaflet.awesome-markers.min.css";
+@import "leaflet-geosearch/dist/geosearch.css";
+@import "leaflet-control-geocoder/dist/Control.Geocoder.css";   

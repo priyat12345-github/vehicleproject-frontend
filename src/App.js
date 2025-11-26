@@ -6,6 +6,8 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
 import ProtectedRoute from "./ProtectedRoute";
+import GpsTracker from "./pages/GpsTracker";
+import LiveMap from "./pages/live-map";
 
 function App() {
   return (
@@ -37,8 +39,11 @@ function App() {
            </ProtectedRoute>
   }
 />
+       <Route path="/gps-tracker/:number" element={<GpsTracker />} />
+       <Route path="/live-map/:number" element={<LiveMap />} />
+      </Routes>
 
-        </Routes>
+       
       </div>
     </Router>
   );
