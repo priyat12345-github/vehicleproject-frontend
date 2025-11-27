@@ -17,7 +17,7 @@ function LiveMap() {
   // FIX: useCallback to avoid React warning
   const fetchLocation = useCallback(async () => {
     const res = await fetch(
-      `http://16.170.248.80:5001/api/getLocation?number=${number}`
+      `https://backend-location.duckdns.org/api/getLocation?number=${number}`
     );
     const data = await res.json();
 

@@ -10,7 +10,7 @@ function GpsTracker() {
         const latitude = pos.coords.latitude;
         const longitude = pos.coords.longitude;
 
-        fetch("http://16.170.248.80:5001/api/updateLocation", {
+        fetch("https://backend-location.duckdns.org/api/updateLocation", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({

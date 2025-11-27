@@ -8,7 +8,7 @@ export default function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://16.170.248.80:5001/api/auth/login", { email, password });
+      const res = await axios.post("https://backend-location.duckdns.org/api/auth/login", { email, password });
       localStorage.setItem("token", res.data.token);
       alert("Login successful!");
       window.location.href = "/dashboard";
