@@ -11,7 +11,7 @@ import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
 import Insurance from "./pages/Insurance";   // ⭐ NEW: Insurance
 import EmailLogs from "./pages/EmailLogs";   // ⭐ NEW: Email Logs
-import AddVehicle from "./pages/AddVehicle"; // ⭐ NEW: Add Vehicle
+//import AddVehicle from "./pages/AddVehicle"; // ⭐ NEW: Add Vehicle
 import SendReminder from "./pages/SendReminder"; // ⭐ NEW: Send Reminder
 import GpsTracker from "./pages/gps-tracker";
 import LiveMap from "./pages/live-map";
@@ -72,15 +72,7 @@ function App() {
           />
 
           {/* ⭐ NEW: Add Vehicle Page → Protected */}
-          <Route
-            path="/add-vehicle"
-            element={
-              <ProtectedRoute>
-                <AddVehicle />
-              </ProtectedRoute>
-            }
-          />
-
+        
           {/* ⭐ NEW: Send Reminder Page → Protected */}
           <Route
             path="/send-reminder"
