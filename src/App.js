@@ -10,9 +10,9 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
 import Insurance from "./pages/Insurance";   // ⭐ NEW: Insurance
-import EmailLogs from "./pages/EmailLogs";   // ⭐ NEW: Email Logs
+//import EmailLogs from "./pages/EmailLogs";   // ⭐ NEW: Email Logs
 //import AddVehicle from "./pages/AddVehicle"; // ⭐ NEW: Add Vehicle
-import SendReminder from "./pages/SendReminder"; // ⭐ NEW: Send Reminder
+//import SendReminder from "./pages/SendReminder"; // ⭐ NEW: Send Reminder
 import GpsTracker from "./pages/gps-tracker";
 import LiveMap from "./pages/live-map";
 
@@ -62,26 +62,11 @@ function App() {
           />
 
           {/* ⭐ NEW: Email Logs Page → Protected */}
-          <Route
-            path="/email-logs"
-            element={
-              <ProtectedRoute>
-                <EmailLogs />
-              </ProtectedRoute>
-            }
-          />
 
           {/* ⭐ NEW: Add Vehicle Page → Protected */}
         
           {/* ⭐ NEW: Send Reminder Page → Protected */}
-          <Route
-            path="/send-reminder"
-            element={
-              <ProtectedRoute>
-                <SendReminder />
-              </ProtectedRoute>
-            }
-          />
+          
 
           {/* GPS TRACKING */}
           <Route path="/gps-tracker/:number" element={<GpsTracker />} />
