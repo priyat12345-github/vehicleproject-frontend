@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+
 export default function Navbar() {
   // Function to handle logout
   const handleLogout = () => {
@@ -22,6 +23,10 @@ export default function Navbar() {
       <Link to="/login" style={{ color: "white", textDecoration: "none" }}>Login</Link>
       <Link to="/signup" style={{ color: "white", textDecoration: "none" }}>Signup</Link>
       <Link to="/dashboard" style={{ color: "white", textDecoration: "none" }}>Dashboard</Link>
+      <Link to="/insurance">
+  <button style={{ padding: "10px", marginTop: "10px" }}>Buy Insurance</button>
+</Link>
+
 
       {/* Logout button only if logged in */}
       {localStorage.getItem("token") && (
