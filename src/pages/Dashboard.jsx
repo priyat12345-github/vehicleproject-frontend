@@ -9,7 +9,7 @@ function Dashboard() {
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("all");
 
-  const BASE_URL = "https://backend-location.duckdns.org/api";
+  const BASE_URL = "http://16.170.248.80:5001/api";
 
   useEffect(() => {
     const fetchData = async () => {

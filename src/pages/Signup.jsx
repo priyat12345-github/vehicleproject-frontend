@@ -8,7 +8,7 @@ export default function Signup() {
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("https://backend-location.duckdns.org/api/auth/register", { email, password });
+      await axios.post("http://16.170.248.80:5001/api/auth/register", { email, password });
       alert("User registered successfully!");
       window.location.href = "/login";
     } catch (err) {

@@ -25,13 +25,13 @@ function VehicleSearch() {
 
       // Fetch vehicle details
       const response = await axios.get(
-        `https://backend-location.duckdns.org/api/vehicles/${formattedNumber}`
+        `http://16.170.248.80:5001/api/vehicles/${formattedNumber}`
       );
       setVehicle(response.data);
 
       // ⭐ Fetch vehicle location
       const locationRes = await axios.get(
-        `https://backend-location.duckdns.org/api/getLocation?number=${formattedNumber}`
+        `http://16.170.248.80:5001/api/getLocation?number=${formattedNumber}`
       );
 
       if (locationRes.data.success) {
