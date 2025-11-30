@@ -31,7 +31,7 @@ const Insurance = () => {
       return;
     }
 
-    const res = await axios.post("http://localhost:5001/api/insurance/pay", {
+    const res = await axios.post("https://backend-location.duckdns.org/api/insurance/pay", {
       name: fullName,
       vehicle,
       insuranceType,
@@ -63,7 +63,7 @@ const Insurance = () => {
           <button
             onClick={() =>
               window.open(
-                `http://localhost:5001/api/insurance/receipt/${details._id}`
+                `https://backend-location.duckdns.org/api/insurance/receipt/${details._id}`
               )
             }
             style={{
