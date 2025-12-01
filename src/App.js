@@ -13,8 +13,8 @@ import Insurance from "./pages/Insurance";   // ⭐ NEW: Insurance
 //import EmailLogs from "./pages/EmailLogs";   // ⭐ NEW: Email Logs
 //import AddVehicle from "./pages/AddVehicle"; // ⭐ NEW: Add Vehicle
 //import SendReminder from "./pages/SendReminder"; // ⭐ NEW: Send Reminder
-import GpsTracker from "./pages/gps-tracker";
-import LiveMap from "./pages/live-map";
+
+
 
 function App() {
   return (
@@ -69,8 +69,7 @@ function App() {
           
 
           {/* GPS TRACKING */}
-          <Route path="/gps-tracker/:number" element={<GpsTracker />} />
-          <Route path="/live-map/:number" element={<LiveMap />} />
+          
         </Routes>
       </div>
     </Router>
