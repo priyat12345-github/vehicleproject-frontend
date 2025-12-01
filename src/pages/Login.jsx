@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "./Login.css";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -8,7 +9,10 @@ export default function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://16.170.248.80:5001/api/auth/login", { email, password });
+      const res = await axios.post(
+        "http://16.170.248.80:5001/api/auth/login",
+        { email, password }
+      );
       localStorage.setItem("token", res.data.token);
       alert("Login successful!");
       window.location.href = "/dashboard";
@@ -19,12 +23,27 @@ export default function Login() {
 
   return (
     <div className="auth-container">
-      <h2>Login</h2>
-      <form onSubmit={handleLogin}>
-        <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} required />
-        <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} required />
-        <button type="submit">Login</button>
-      </form>
+      <div className="auth-box">
+        <h2>Login</h2>
+
+        <form onSubmit={handleLogin}>
+          <input
+            type="email"
+            placeholder="Email"
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+
+          <input
+            type="password"
+            placeholder="Password"
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+
+          <button type="submit">Login</button>
+        </form>
+      </div>
     </div>
   );
 }

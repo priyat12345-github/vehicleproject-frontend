@@ -1,0 +1,71 @@
+/* Full page background */
+.auth-container {
+  min-height: 100vh;
+  background: #0f172a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* The card that holds your same form */
+.auth-box {
+  width: 350px;
+  padding: 35px 30px;
+  border-radius: 18px;
+
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  box-shadow:
+    inset 2px 2px 4px rgba(255, 255, 255, 0.03),
+    inset -2px -2px 4px rgba(0, 0, 0, 0.5),
+    0 6px 20px rgba(0, 0, 0, 0.6);
+
+  text-align: center;
+}
+
+/* Title (same text) */
+.auth-box h2 {
+  color: white;
+  margin-bottom: 20px;
+  font-size: 26px;
+}
+
+/* Input fields (same fields, just styled) */
+.auth-box input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+
+  border-radius: 10px;
+  border: none;
+  outline: none;
+
+  background: #1e293b;
+  color: white;
+}
+
+.auth-box input::placeholder {
+  color: #94a3b8;
+}
+
+/* Button (same button, styled) */
+.auth-box button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+
+  background: linear-gradient(145deg, #2563eb, #1d4ed8);
+  color: white;
+  font-size: 16px;
+
+  transition: 0.2s;
+  box-shadow: 0 3px 10px rgba(37, 99, 235, 0.4);
+}
+
+.auth-box button:hover {
+  background: linear-gradient(145deg, #1d4ed8, #1e40af);
+}

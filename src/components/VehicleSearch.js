@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
-import LiveMap from "../pages/live-map";  // ⭐ Add import
+import LiveMap from "../pages/live-map";
+import "./Home.css"; // <-- add this
 
 function VehicleSearch() {
   const [vehicleNumber, setVehicleNumber] = useState("");
   const [vehicle, setVehicle] = useState(null);
-  const [vehicleLocation, setVehicleLocation] = useState(null); // ⭐ Add state
+  const [vehicleLocation, setVehicleLocation] = useState(null);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -23,13 +24,11 @@ function VehicleSearch() {
 
       const formattedNumber = vehicleNumber.trim().toUpperCase();
 
-      // Fetch vehicle details
       const response = await axios.get(
         `http://16.170.248.80:5001/api/vehicles/${formattedNumber}`
       );
       setVehicle(response.data);
 
-      // ⭐ Fetch vehicle location
       const locationRes = await axios.get(
         `http://16.170.248.80:5001/api/getLocation?number=${formattedNumber}`
       );
@@ -37,7 +36,6 @@ function VehicleSearch() {
       if (locationRes.data.success) {
         setVehicleLocation(locationRes.data.location);
       }
-
     } catch (err) {
       setError("❌ Vehicle not found or server error");
     } finally {
@@ -46,7 +44,7 @@ function VehicleSearch() {
   };
 
   return (
-    <div style={{ textAlign: "center", marginTop: "50px" }}>
+    <div className="home-wrapper">
       <h2>🔍 Vehicle Search</h2>
 
       <input
@@ -54,28 +52,20 @@ function VehicleSearch() {
         placeholder="Enter vehicle number"
         value={vehicleNumber}
         onChange={(e) => setVehicleNumber(e.target.value)}
-        style={{ padding: "10px", width: "250px", marginRight: "10px" }}
+        className="home-input"
       />
 
-      <button onClick={handleSearch} style={{ padding: "10px 20px" }}>
+      <button onClick={handleSearch} className="home-btn">
         Search
       </button>
 
-      {loading && <p>⏳ Searching...</p>}
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {loading && <p className="home-loading">⏳ Searching...</p>}
+      {error && <p className="home-error">{error}</p>}
 
-      {/* Vehicle details */}
       {vehicle && (
-        <div style={{
-          marginTop: "20px",
-          border: "1px solid #ddd",
-          padding: "20px",
-          borderRadius: "10px",
-          width: "400px",
-          margin: "20px auto",
-          background: "#f9fafb",
-        }}>
+        <div className="vehicle-card">
           <h3>📄 Vehicle Details</h3>
+
           <p><b>Number:</b> {vehicle.number}</p>
           <p><b>Make:</b> {vehicle.make || "N/A"}</p>
           <p><b>Model:</b> {vehicle.model || "N/A"}</p>
@@ -86,14 +76,15 @@ function VehicleSearch() {
         </div>
       )}
 
-      {/* ⭐ Live map below vehicle details */}
       {vehicleLocation && (
-        <div style={{ marginTop: "20px" }}>
+        <div className="map-section">
           <h3>📍 Live Location</h3>
-          <LiveMap lat={vehicleLocation.latitude} lng={vehicleLocation.longitude} />
+          <LiveMap
+            lat={vehicleLocation.latitude}
+            lng={vehicleLocation.longitude}
+          />
         </div>
       )}
-
     </div>
   );
 }

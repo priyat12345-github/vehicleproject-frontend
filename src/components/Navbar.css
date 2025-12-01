@@ -1,0 +1,61 @@
+/* -------------------- NAVBAR -------------------- */
+.navbar {
+  background: #0f172a; /* same as dashboard */
+  padding: 15px 30px;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+/* -------------------- LINKS -------------------- */
+.nav-link {
+  color: #cbd5e1;
+  font-size: 16px;
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 10px;
+  transition: 0.2s ease-in-out;
+}
+
+.nav-link:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+/* -------------------- BUY INSURANCE BUTTON -------------------- */
+.nav-insurance-btn {
+  padding: 10px 18px;
+  background: linear-gradient(145deg, #2563eb, #1d4ed8);
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  color: white;
+  font-size: 15px;
+  box-shadow: 0 3px 10px rgba(37, 99, 235, 0.4);
+  transition: 0.2s ease-in-out;
+}
+
+.nav-insurance-btn:hover {
+  background: linear-gradient(145deg, #1d4ed8, #1e40af);
+}
+
+/* -------------------- LOGOUT BUTTON -------------------- */
+.nav-logout-btn {
+  background: #dc2626;
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+.nav-logout-btn:hover {
+  background: #b91c1c;
+}

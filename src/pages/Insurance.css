@@ -1,0 +1,92 @@
+/* -------------- Full Page Wrapper -------------- */
+.insurance-wrapper {
+  min-height: 100vh;
+  background: #0f172a; /* dark theme */
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* -------------- Card Box -------------- */
+.insurance-box {
+  width: 400px;
+  padding: 35px 30px;
+  border-radius: 18px;
+  text-align: center;
+
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  box-shadow:
+    inset 1px 1px 3px rgba(255, 255, 255, 0.05),
+    inset -1px -1px 3px rgba(0, 0, 0, 0.6),
+    0 8px 25px rgba(0, 0, 0, 0.6);
+
+  color: white;
+}
+
+/* -------------- Title -------------- */
+.insurance-box h2 {
+  margin-bottom: 20px;
+  font-size: 28px;
+  color: #ffffff;
+}
+
+/* -------------- Inputs -------------- */
+.insurance-input,
+.insurance-select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+
+  border: none;
+  border-radius: 10px;
+  background: #1e293b;
+  color: white;
+}
+
+.insurance-input::placeholder {
+  color: #94a3b8;
+}
+
+/* -------------- QR section -------------- */
+.scan-title {
+  margin-top: 10px;
+  font-size: 15px;
+}
+
+.scan-sub {
+  font-size: 12px;
+  color: #94a3b8;
+  margin-top: 8px;
+}
+
+/* -------------- Buttons -------------- */
+.insurance-btn {
+  padding: 12px;
+  width: 100%;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
+
+  background: linear-gradient(145deg, #2563eb, #1d4ed8);
+  color: white;
+  font-size: 16px;
+  transition: 0.2s;
+  box-shadow: 0 3px 10px rgba(37, 99, 235, 0.4);
+}
+
+.insurance-btn:hover {
+  background: linear-gradient(145deg, #1d4ed8, #1e40af);
+}
+
+/* Success button (Download Receipt) */
+.download-btn {
+  background: linear-gradient(145deg, #22c55e, #16a34a);
+}
+
+.download-btn:hover {
+  background: linear-gradient(145deg, #16a34a, #15803d);
+}

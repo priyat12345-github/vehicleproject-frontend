@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "./Signup.css";
 
 export default function Signup() {
   const [email, setEmail] = useState("");
@@ -8,7 +9,10 @@ export default function Signup() {
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://16.170.248.80:5001/api/auth/register", { email, password });
+      await axios.post("http://16.170.248.80:5001/api/auth/register", {
+        email,
+        password
+      });
       alert("User registered successfully!");
       window.location.href = "/login";
     } catch (err) {
@@ -18,12 +22,27 @@ export default function Signup() {
 
   return (
     <div className="auth-container">
-      <h2>Signup</h2>
-      <form onSubmit={handleSignup}>
-        <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} required />
-        <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} required />
-        <button type="submit">Signup</button>
-      </form>
+      <div className="auth-box">
+        <h2>Signup</h2>
+
+        <form onSubmit={handleSignup}>
+          <input
+            type="email"
+            placeholder="Email"
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+
+          <input
+            type="password"
+            placeholder="Password"
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+
+          <button type="submit">Signup</button>
+        </form>
+      </div>
     </div>
   );
 }
