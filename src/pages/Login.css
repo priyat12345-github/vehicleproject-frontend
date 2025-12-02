@@ -1,7 +1,7 @@
 /* Full page background */
 .auth-container {
   min-height: 100vh;
-  background: #0f172a;
+  background: transparent; /* keep background of body */
   display: flex;
   align-items: center;
   justify-content: center;
